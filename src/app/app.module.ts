@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 /*components de app*/
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 
 /*components de shered */
 import { FooterComponent } from './shared/footer/footer.component';
@@ -22,7 +23,10 @@ import { MainComponent } from './componet/main/main.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule, 
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

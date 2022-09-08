@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
+import { LoginI } from '..//modulo/loguin.interative';
+import { ReponseI } from '..//modulo/reponse.interface'
 import { HttpClient, HttpHeaders, HttpResponse, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -12,18 +14,15 @@ export class APIservicioService {
   public url:string;
 
   constructor(private http:HttpClient) { 
-    this.url = "https://reqres.in/api/"
+    this.url = "https://api-salud-alejandro.herokuapp.com"
   }
 
-  getPosts(): Observable<any>{
-    // me debuelver listado de post desde wp-rest-api
-    return this.http.get(this.url+"users/2");
+  loginByEmail(form:LoginI):Observable<ReponseI>{
+    let direccion = this.url +"/api/auth";
+    return this.http.post<ReponseI>(direccion,from);
+
   }
-  
-  getP(): Observable<any>{
-    // me debuelver listado de post desde wp-rest-api
-    return this.http.get(this.url+"users/2");
-  }
+
 
 
 }

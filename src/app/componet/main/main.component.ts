@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormControl,Validators } from '@angular/forms';
+import { from } from 'rxjs';
 import { APIservicioService } from 'src/app/Service/apiservicio.service';
+import {LoginI} from '../../modulo/loguin.interative';
+
 
 @Component({
   selector: 'app-main',
@@ -7,22 +11,24 @@ import { APIservicioService } from 'src/app/Service/apiservicio.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  
-public postpages27 = new Array();
-public getPosts = new Array();
+  loginForm = new FormGroup({
+     usuario : new FormControl('', Validators.required),
+     password : new FormControl('', Validators.required)
+  })
 
-constructor(private ApiServicio: APIservicioService) { }
 
-ngOnInit(): void {
-        
+  constructor(private ApiServicio: APIservicioService) { }
 
-  // this.ApiServicio.getPosts().subscribe(
-  //   result => {
+  ngOnInit(): void {
+    
+  }
 
-  //     this.postpages27.push(result);
+  onLogin(from:LoginI){
+    this.ApiServicio.loginByEmail(from).subscribe(data =>{
+      console.log(data);
+    })
+    
+  }
 
-  //     console.log(this.postpages27)
-  //   }
-  // )
-}
+
 }
