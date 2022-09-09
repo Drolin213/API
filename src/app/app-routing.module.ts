@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { MainComponent } from './componet/main/main.component';
 import { AuthComponent } from './componet/auth/auth.component';
+import { ReguitraComponent } from './componet/reguitra/reguitra.component';
 
 const routes: Routes = [
   {path: '',component: MainComponent},
-  {path: '', component: AuthComponent},
+  {path: 'auth', component: AuthComponent},
+  {path: 'reguitra', component: ReguitraComponent},
   {path: '**',pathMatch: 'full', redirectTo: ''}
 
 ];
